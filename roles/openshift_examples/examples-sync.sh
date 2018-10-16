@@ -6,8 +6,8 @@
 # This script should be run from openshift-ansible/roles/openshift_examples
 
 XPAAS_VERSION=ose-v1.4.14
-RHDM70_VERSION=7.0.1.GA
-RHPAM70_VERSION=7.0.2.GA
+RHDM71_VERSION=7.1.0.GA
+RHPAM71_VERSION=7.1.0.GA
 DG_72_VERSION=1.1.1
 ORIGIN_VERSION=${1:-v3.11}
 ORIGIN_BRANCH=${2:-master}
@@ -23,8 +23,8 @@ fi
 wget https://github.com/openshift/origin/archive/${ORIGIN_BRANCH}.zip -O origin.zip
 wget https://github.com/jboss-fuse/application-templates/archive/GA.zip -O fis-GA.zip
 wget https://github.com/jboss-openshift/application-templates/archive/${XPAAS_VERSION}.zip -O application-templates-master.zip
-wget https://github.com/jboss-container-images/rhdm-7-openshift-image/archive/${RHDM70_VERSION}.zip -O rhdm-application-templates.zip
-wget https://github.com/jboss-container-images/rhpam-7-openshift-image/archive/${RHPAM70_VERSION}.zip -O rhpam-application-templates.zip
+wget https://github.com/jboss-container-images/rhdm-7-openshift-image/archive/${RHDM71_VERSION}.zip -O rhdm-application-templates.zip
+wget https://github.com/jboss-container-images/rhpam-7-openshift-image/archive/${RHPAM71_VERSION}.zip -O rhpam-application-templates.zip
 wget https://github.com/3scale/rhamp-openshift-templates/archive/${RHAMP_TAG}.zip -O amp.zip
 wget https://github.com/jboss-container-images/jboss-datagrid-7-openshift-image/archive/${DG_72_VERSION}.zip -O dg-application-templates.zip
 unzip origin.zip
@@ -39,8 +39,8 @@ mv origin-${ORIGIN_BRANCH}/examples/quickstarts/*.{yaml,json} ${EXAMPLES_BASE}/q
 mv origin-${ORIGIN_BRANCH}/examples/jenkins/jenkins-*template.json ${EXAMPLES_BASE}/quickstart-templates/
 mv origin-${ORIGIN_BRANCH}/examples/image-streams/*.{yaml,json} ${EXAMPLES_BASE}/image-streams/
 mv application-templates-${XPAAS_VERSION}/jboss-image-streams.json ${EXAMPLES_BASE}/xpaas-streams/
-mv rhdm-7-openshift-image-${RHDM70_VERSION}/rhdm70-image-streams.yaml ${EXAMPLES_BASE}/xpaas-streams/
-mv rhpam-7-openshift-image-${RHPAM70_VERSION}/rhpam70-image-streams.yaml ${EXAMPLES_BASE}/xpaas-streams/
+mv rhdm-7-openshift-image-${RHDM71_VERSION}/rhdm71-image-streams.yaml ${EXAMPLES_BASE}/xpaas-streams/
+mv rhpam-7-openshift-image-${RHPAM71_VERSION}/rhpam71-image-streams.yaml ${EXAMPLES_BASE}/xpaas-streams/
 mv jboss-datagrid-7-openshift-image-${DG_72_VERSION}/templates/datagrid72-image-stream.json ${EXAMPLES_BASE}/xpaas-streams/
 # fis content from jboss-fuse/application-templates-GA would collide with jboss-openshift/application-templates
 # as soon as they use the same branch/tag names
